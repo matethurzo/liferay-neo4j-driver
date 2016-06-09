@@ -21,6 +21,8 @@ Currently we are wrapping the Neo4j Java driver 1.0.1 version. For more informat
 * Clone this repository and call ```mvn clean install```
 * Alternatively download the pre-built JAR file from this repository's target directory
 
+Once you have the JAR file you can reference it as a compile time dependency. You can drop it to the OSGi container and the driver will be available for other bundles to use.
+
 # Compatibility
 
 * Java 1.8
