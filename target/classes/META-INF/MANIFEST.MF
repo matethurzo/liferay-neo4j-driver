@@ -1,25 +1,26 @@
 Manifest-Version: 1.0
-Bnd-LastModified: 1465481116702
+Bnd-LastModified: 1465487639425
 Build-Jdk: 1.8.0_74
 Built-By: matet
+Bundle-Description: Official Neo4j Java Driver with OSGi support.
+Bundle-License: http://www.gnu.org/licenses/lgpl.txt
 Bundle-ManifestVersion: 2
 Bundle-Name: Liferay Neo4j OSGi Driver
 Bundle-SymbolicName: com.liferay.neo4j.neo4j-osgi-driver
-Bundle-Version: 1.0.0.SNAPSHOT
+Bundle-Version: 1.0.0
 Created-By: Apache Maven Bundle Plugin
 Embed-Dependency: *;scope=compile;inline=true
 Embed-Directory: target/dependency
 Embed-StripGroup: true
-Export-Package: com.liferay.neo4j;version="1.0.0.SNAPSHOT";uses:="org.ne
- o4j.driver.v1",org.neo4j.driver.v1;version="1.0.0.SNAPSHOT";uses:="org.
- neo4j.driver.v1.exceptions,org.neo4j.driver.v1.summary,org.neo4j.driver
- .v1.types,org.neo4j.driver.v1.util",org.neo4j.driver.v1.exceptions;vers
- ion="1.0.0.SNAPSHOT",org.neo4j.driver.v1.exceptions.value;version="1.0.
- 0.SNAPSHOT";uses:="org.neo4j.driver.v1.exceptions",org.neo4j.driver.v1.
- summary;version="1.0.0.SNAPSHOT";uses:="org.neo4j.driver.v1,org.neo4j.d
- river.v1.util",org.neo4j.driver.v1.types;version="1.0.0.SNAPSHOT";uses:
- ="org.neo4j.driver.v1,org.neo4j.driver.v1.util",org.neo4j.driver.v1.uti
- l;version="1.0.0.SNAPSHOT"
+Export-Package: com.liferay.neo4j;version="1.0.0";uses:="org.neo4j.drive
+ r.v1",org.neo4j.driver.v1;version="1.0.0";uses:="org.neo4j.driver.v1.ex
+ ceptions,org.neo4j.driver.v1.summary,org.neo4j.driver.v1.types,org.neo4
+ j.driver.v1.util",org.neo4j.driver.v1.exceptions;version="1.0.0",org.ne
+ o4j.driver.v1.exceptions.value;version="1.0.0";uses:="org.neo4j.driver.
+ v1.exceptions",org.neo4j.driver.v1.summary;version="1.0.0";uses:="org.n
+ eo4j.driver.v1,org.neo4j.driver.v1.util",org.neo4j.driver.v1.types;vers
+ ion="1.0.0";uses:="org.neo4j.driver.v1,org.neo4j.driver.v1.util",org.ne
+ o4j.driver.v1.util;version="1.0.0"
 Import-Package: javax.net.ssl,javax.xml.bind,org.neo4j.driver.v1.excepti
  ons;version="[1.0,2)",org.neo4j.driver.v1.exceptions.value;version="[1.
  0,2)",org.neo4j.driver.v1.summary;version="[1.0,2)",org.neo4j.driver.v1
