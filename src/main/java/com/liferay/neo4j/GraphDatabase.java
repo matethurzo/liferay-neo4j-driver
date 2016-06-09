@@ -56,10 +56,32 @@ public class GraphDatabase {
 	}
 
 	public GraphDatabaseResult runStatement(
+		String url, String userName, String password, String statement, boolean autocloseSession,
+		int autocloseTimeout) {
+
+		return doRunStatement(url, userName, password, statement, null, autocloseSession, autocloseTimeout);
+	}
+
+	public GraphDatabaseResult runStatement(
 		String url, String userName, String password, String statement, Map<String, Object> parameters) {
 
-		return doRunStatement(
-			url, userName, password, statement, parameters, true, SESSION_AUTOCLOSE_TIMEOUT);
+		return runStatement(
+			url, userName, password, statement, parameters, true);
+	}
+
+	public GraphDatabaseResult runStatement(
+		String url, String userName, String password, String statement, Map<String, Object> parameters,
+		boolean autocloseSession) {
+
+		return runStatement(
+			url, userName, password, statement, parameters, autocloseSession, SESSION_AUTOCLOSE_TIMEOUT);
+	}
+
+	public GraphDatabaseResult runStatement(
+		String url, String userName, String password, String statement, Map<String, Object> parameters,
+		boolean autocloseSession, int autocloseTimeout) {
+
+		return doRunStatement(url, userName, password, statement, parameters, autocloseSession, autocloseTimeout);
 	}
 
 	public void endStatement(String resultUuid) {
