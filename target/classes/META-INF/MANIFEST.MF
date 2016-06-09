@@ -1,0 +1,37 @@
+Manifest-Version: 1.0
+Bnd-LastModified: 1465473153498
+Build-Jdk: 1.8.0_74
+Built-By: matet
+Bundle-ClassPath: .,target/dependency/neo4j-java-driver-1.0.1.jar,target
+ /dependency/org.osgi.service.component.annotations-1.3.0.jar
+Bundle-ManifestVersion: 2
+Bundle-Name: Liferay Neo4j OSGi Driver
+Bundle-SymbolicName: com.liferay.neo4j.neo4j-osgi-driver
+Bundle-Version: 1.0.0.SNAPSHOT
+Created-By: Apache Maven Bundle Plugin
+Embed-Dependency: *;scope=compile;inline=false
+Embed-Directory: target/dependency
+Embed-StripGroup: true
+Embedded-Artifacts: target/dependency/neo4j-java-driver-1.0.1.jar;g="org
+ .neo4j.driver";a="neo4j-java-driver";v="1.0.1",target/dependency/org.os
+ gi.service.component.annotations-1.3.0.jar;g="org.osgi";a="org.osgi.ser
+ vice.component.annotations";v="1.3.0"
+Export-Package: com.liferay.neo4j;version="1.0.0.SNAPSHOT";uses:="org.ne
+ o4j.driver.v1",org.neo4j.driver.v1;version="1.0.0.SNAPSHOT";uses:="org.
+ neo4j.driver.v1.exceptions,org.neo4j.driver.v1.summary,org.neo4j.driver
+ .v1.types,org.neo4j.driver.v1.util",org.neo4j.driver.v1.exceptions;vers
+ ion="1.0.0.SNAPSHOT",org.neo4j.driver.v1.exceptions.value;version="1.0.
+ 0.SNAPSHOT";uses:="org.neo4j.driver.v1.exceptions",org.neo4j.driver.v1.
+ summary;version="1.0.0.SNAPSHOT";uses:="org.neo4j.driver.v1,org.neo4j.d
+ river.v1.util",org.neo4j.driver.v1.types;version="1.0.0.SNAPSHOT";uses:
+ ="org.neo4j.driver.v1,org.neo4j.driver.v1.util",org.neo4j.driver.v1.uti
+ l;version="1.0.0.SNAPSHOT"
+Import-Package: javax.net.ssl,javax.xml.bind,org.neo4j.driver.v1.excepti
+ ons;version="[1.0,2)",org.neo4j.driver.v1.exceptions.value;version="[1.
+ 0,2)",org.neo4j.driver.v1.summary;version="[1.0,2)",org.neo4j.driver.v1
+ .types;version="[1.0,2)",org.neo4j.driver.v1.util;version="[1.0,2)"
+Provide-Capability: osgi.service;objectClass:List<String>="com.liferay.n
+ eo4j.GraphDatabase"
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.8))"
+Service-Component: OSGI-INF/com.liferay.neo4j.GraphDatabase.xml
+Tool: Bnd-3.0.0.201509101326
