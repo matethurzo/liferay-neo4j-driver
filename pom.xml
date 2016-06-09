@@ -65,7 +65,7 @@
                         <Bundle-SymbolicName>${pom.groupId}.${pom.artifactId}</Bundle-SymbolicName>
                         <Bundle-Version>${pom.version}</Bundle-Version>
                         <_exportcontents>com.liferay.neo4j,org.neo4j.driver.v1.*</_exportcontents>
-                        <Embed-Dependency>*;scope=compile;inline=false</Embed-Dependency>
+                        <Embed-Dependency>*;scope=compile;inline=true</Embed-Dependency>
                         <Embed-Directory>target/dependency</Embed-Directory>
                         <Embed-StripGroup>true</Embed-StripGroup>
                     </instructions>
