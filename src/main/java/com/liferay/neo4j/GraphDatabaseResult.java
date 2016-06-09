@@ -30,13 +30,6 @@ public class GraphDatabaseResult {
 		_statementResult = statementResult;
 	}
 
-	public GraphDatabaseResult(
-		String resultUuid, StatementResult statementResult) {
-
-		_resultUuid = resultUuid;
-		_statementResult = statementResult;
-	}
-
 	public String getResultUuid() {
 		return _resultUuid;
 	}
