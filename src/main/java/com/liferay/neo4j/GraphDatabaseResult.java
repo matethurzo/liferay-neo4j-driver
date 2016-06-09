@@ -21,23 +21,46 @@ import java.util.List;
 import java.util.UUID;
 
 /**
+ * This class is a result of statement ran against a Neo4j database using one of ther <code>runStatement</code> methods
+ * in {@link GraphDatabase}. Wraps a Neo4j {@link StatementResult} object and holds an additional result UUID.
+ *
  * @author Mate Thurzo
  */
 public class GraphDatabaseResult {
 
+	/**
+	 * Creates a <code>GraphDatabaseResult</code> object based on a StatementResult coming from the Neo4j database.
+	 *
+	 * @param statementResult the result of a cypher statement run
+	 */
 	public GraphDatabaseResult(StatementResult statementResult) {
 		_resultUuid = UUID.randomUUID().toString();
 		_statementResult = statementResult;
 	}
 
+	/**
+	 * Return the result's UUID.
+	 *
+	 * @return the result UUID
+	 */
 	public String getResultUuid() {
 		return _resultUuid;
 	}
 
+	/**
+	 * Returns the Neo4j {@link StatementResult} this class is wrapping.
+	 *
+	 * @return the Neo4j result object holding the execution result of a cypher run
+	 */
 	public StatementResult getStatementResult() {
 		return _statementResult;
 	}
 
+	/**
+	 * Returns the entire result stream. This wraps the {@link StatementResult#list()} method.
+	 *
+	 * @return the entire result stream
+	 */
 	public List<Record> list() {
 		return _statementResult.list();
 	}
