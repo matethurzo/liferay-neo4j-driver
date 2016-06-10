@@ -6,6 +6,7 @@
 
     <name>Liferay Neo4j OSGi Driver</name>
     <description>Official Neo4j Java Driver with OSGi support.</description>
+    <url>https://github.com/matethurzo/liferay-neo4j-driver</url>
     <licenses>
         <license>
             <name>LGPL 3</name>
