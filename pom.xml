@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <name>Liferay Neo4j OSGi Driver</name>
@@ -29,11 +27,12 @@
         <connection>scm:git:git@github.com:matethurzo/liferay-neo4j-driver.git</connection>
         <developerConnection>scm:git:git@github.com:matethurzo/liferay-neo4j-driver.git</developerConnection>
         <url>https://github.com/matethurzo/liferay-neo4j-driver</url>
-    </scm>
+      <tag>neo4j-osgi-driver-1.0.0</tag>
+  </scm>
 
     <groupId>com.liferay.neo4j</groupId>
     <artifactId>neo4j-osgi-driver</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.0</version>
 
     <packaging>bundle</packaging>
 
