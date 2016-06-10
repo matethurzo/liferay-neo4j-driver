@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Bnd-LastModified: 1465557130132
+Bnd-LastModified: 1465557517591
 Build-Jdk: 1.8.0_74
 Built-By: matet
 Bundle-Description: Official Neo4j Java Driver with OSGi support.
