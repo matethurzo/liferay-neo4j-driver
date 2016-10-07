@@ -3,7 +3,7 @@ OSGi compatible version of the Neo4j Java driver brought to you by Liferay.
 
 This driver is wrapping the official Neo4j Java language driver by adding OSGi compatibility. The Neo4j driver is being included as-is, we haven't modified anything on it. The output of this project is an OSGi bundle that you can deploy to your OSGi container and use the driver.
 
-Currently we are wrapping the Neo4j Java driver 1.0.1 version. For more information on the driver itself please visit the official  [Neo4j site](http://neo4j.com/).
+Currently we are wrapping the Neo4j Java driver 1.0.5 version. For more information on the driver itself please visit the official  [Neo4j site](http://neo4j.com/).
 
 # Features
 
@@ -37,6 +37,6 @@ Once you have the JAR file you can reference it as a compile time dependency. Yo
 # Compatibility
 
 * Java 1.8
-* Neo4j Java Driver 1.0.1 and Neo4j Server 3.0
+* Neo4j Java Driver 1.0.5 and Neo4j Server 3.0
 * Tested with Liferay 7.0 GA2
 * For a sample Liferay 7.0 plugin with Neo4j support check out our [sample repository](https://github.com/danielkocsis/neo4j-sample-portlet)
