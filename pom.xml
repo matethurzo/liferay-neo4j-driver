@@ -13,11 +13,6 @@
     </licenses>
     <developers>
         <developer>
-            <name>Daniel Kocsis</name>
-            <organization>Liferay, Inc.</organization>
-            <organizationUrl>http://www.liferay.com</organizationUrl>
-        </developer>
-        <developer>
             <name>Mate Thurzo</name>
             <organization>Liferay, Inc.</organization>
             <organizationUrl>http://www.liferay.com</organizationUrl>
