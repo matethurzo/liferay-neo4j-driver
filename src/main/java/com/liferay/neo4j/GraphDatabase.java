@@ -14,12 +14,15 @@
 
 package com.liferay.neo4j;
 
+import aQute.bnd.annotation.metatype.Configurable;
+import com.liferay.neo4j.configuration.GraphDatabaseConfiguration;
 import org.neo4j.driver.v1.AuthToken;
 import org.neo4j.driver.v1.AuthTokens;
 import org.neo4j.driver.v1.Session;
 import org.neo4j.driver.v1.StatementResult;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.ConfigurationPolicy;
 import org.osgi.service.component.annotations.Modified;
 
 import java.util.HashMap;
@@ -35,8 +38,19 @@ import java.util.concurrent.TimeUnit;
  *
  * @author Mate Thurzo
  */
-@Component(immediate = true, service = GraphDatabase.class)
+@Component(
+	configurationPid = "com.liferay.neo4j.configuration.GraphDatabaseConfiguration",
+	configurationPolicy = ConfigurationPolicy.REQUIRE,
+	immediate = true, service = GraphDatabase.class)
 public class GraphDatabase {
+
+	@Activate
+	public void activate(Map<String, Object> properties) {
+		_graphDatabaseConfiguration = Configurable.createConfigurable(GraphDatabaseConfiguration.class, properties);
+
+		org.neo4j.driver.v1.Driver driver = GraphDatabase.driver(
+			"bolt://localhost:7687", AuthTokens.basic("neo4j", "test"));Í
+	}
 
 	/**
 	 * A basic timeout value after a session is being automatically closed if one of the runStatement methods is being
@@ -246,5 +260,6 @@ public class GraphDatabase {
 
 	private org.neo4j.driver.v1.Driver _neo4jDriver;
 	private Map<String, Session> _sessionMap;
+	private GraphDatabaseConfiguration _graphDatabaseConfiguration;
 
 }
