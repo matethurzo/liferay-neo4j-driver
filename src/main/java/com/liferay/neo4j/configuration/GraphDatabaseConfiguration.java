@@ -20,21 +20,23 @@ import aQute.bnd.annotation.metatype.Meta;
  * @author Mate Thurzo
  */
 @Meta.OCD(
-    id = "com.liferay.neo4j.configuration.GraphDatabaseConfiguration",
-    name = "Liferay Neo4j Service Configuration"
+	id = "com.liferay.neo4j.configuration.GraphDatabaseConfiguration", name = "Liferay Neo4j Service Configuration"
 )
 public interface GraphDatabaseConfiguration {
 
-    @Meta.AD(deflt = "neo4j", required = true)
-    public String userName();
+	@Meta.AD(deflt = "neo4j", required = true)
+	public String userName();
 
-    @Meta.AD(deflt = "neo4j", required = true)
-    public String password();
+	@Meta.AD(deflt = "neo4j", required = true)
+	public String password();
 
-    @Meta.AD(deflt = "localhost", required = true)
-    public String url();
+	@Meta.AD(deflt = "localhost", required = true)
+	public String hostname();
 
-    @Meta.AD(deflt = "7687", required = true)
-    public long port();
+	@Meta.AD(deflt = "7687", required = true)
+	public long port();
+
+	@Meta.AD(deflt = "50", required = false)
+	public int connectionPoolSize();
 
 }
