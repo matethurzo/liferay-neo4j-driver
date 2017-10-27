@@ -21,12 +21,15 @@ import org.neo4j.driver.v1.AuthToken;
 import org.neo4j.driver.v1.AuthTokens;
 import org.neo4j.driver.v1.Session;
 import org.neo4j.driver.v1.StatementResult;
+import org.neo4j.graphdb.GraphDatabaseService;
+import org.neo4j.graphdb.factory.GraphDatabaseFactory;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.ConfigurationPolicy;
 import org.osgi.service.component.annotations.Modified;
 import org.osgi.service.metatype.annotations.Designate;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.Callable;
@@ -46,6 +49,8 @@ import java.util.concurrent.TimeUnit;
 	immediate = true, service = GraphDatabase.class)
 @Designate(ocd = GraphDatabaseConfiguration.class)
 public class GraphDatabase {
+
+	public static final String DEFAULT_EMBEDDED_DB_PATH = "data/neo4j/default";
 
 	/**
 	 * OSGi activate method
@@ -92,6 +97,18 @@ public class GraphDatabase {
 	 * <i>This has no effect on the OSGi service configuration</i>
 	 */
 	public static final int SESSION_AUTOCLOSE_TIMEOUT = 5000;
+
+	public GraphDatabaseService getEmbeddedDatabaseService() {
+		if (_embeddedDatabaseService == null) {
+			GraphDatabaseFactory graphDatabaseFactory =
+				new GraphDatabaseFactory();
+
+			_embeddedDatabaseService = graphDatabaseFactory.newEmbeddedDatabase(
+				new File(DEFAULT_EMBEDDED_DB_PATH));
+		}
+
+		return _embeddedDatabaseService;
+	}
 
 	/**
 	 * Runs a Cypher statement on the graph database instance configured via OSGi. This method automatically opens a
@@ -333,6 +350,7 @@ public class GraphDatabase {
 		};
 	}
 
+	private GraphDatabaseService _embeddedDatabaseService;
 	private org.neo4j.driver.v1.Driver _neo4jDriver;
 	private Map<String, Session> _sessionMap;
 	private GraphDatabaseConfiguration _graphDatabaseConfiguration;
