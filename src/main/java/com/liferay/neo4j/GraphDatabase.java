@@ -45,6 +45,11 @@ import java.util.concurrent.TimeUnit;
 	immediate = true, service = GraphDatabase.class)
 public class GraphDatabase {
 
+	/**
+	 * OSGi activate method
+	 *
+	 * @param properties service component configuration parameters
+	 */
 	@Activate
 	public void activate(Map<String, Object> properties) {
 		_sessionMap = new HashMap<>();
@@ -57,6 +62,11 @@ public class GraphDatabase {
 			uri, AuthTokens.basic(_graphDatabaseConfiguration.userName(), _graphDatabaseConfiguration.password()));
 	}
 
+	/**
+	 * OSGi modified method
+	 *
+	 * @param properties service component configuration parameters
+	 */
 	@Modified
 	public void modified(Map<String, Object> properties) {
 		_neo4jDriver.close();

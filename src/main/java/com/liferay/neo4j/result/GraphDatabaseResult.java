@@ -50,6 +50,11 @@ public class GraphDatabaseResult {
 		_statementResult = statementResult;
 	}
 
+	/**
+	 * Returns a stream of <code>Record</code> objects. These records are the actual result of a previous statement run.
+	 *
+	 * @return a stream of records as a result of a statement run.
+	 */
 	public Stream<Record> recordStream() {
 		long estimate = 10L;
 
@@ -87,10 +92,21 @@ public class GraphDatabaseResult {
 			false);
 	}
 
+	/**
+	 * Adds an event handler to run when the result set is exhausted.
+	 *
+	 * @param eventHandler a <code>GraphDatabaseResultEventHandler</code> to run when the result set is exhausted
+	 */
 	public void onExhaustResult(GraphDatabaseResultEventHandler eventHandler) {
 		_onExhaustEventHandlers.add(eventHandler);
 	}
 
+	/**
+	 * Adds an event handler to run before retrieving the next result in the result set.
+	 *
+	 * @param eventHandler a <code>GraphDatabaseResultEventHandler</code> to run before retrieving the next result in a
+	 *                     result set
+	 */
 	public void onBeforeNextResult(GraphDatabaseResultEventHandler eventHandler) {
 		_onBeforeNextEventHandlers.add(eventHandler);
 	}
@@ -114,7 +130,8 @@ public class GraphDatabaseResult {
 	}
 
 	/**
-	 * Returns the entire result stream. This wraps the {@link StatementResult#list()} method.
+	 * Returns the entire result stream. This wraps the {@link StatementResult#list()} method. This method is exhausting
+	 * the result set.
 	 *
 	 * @return the entire result stream
 	 */
