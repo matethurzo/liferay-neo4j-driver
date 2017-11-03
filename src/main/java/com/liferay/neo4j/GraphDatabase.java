@@ -129,9 +129,9 @@ public class GraphDatabase {
 	}
 
 	/**
-	 * Returns the Neo4j Driver configured via the OSGi service configuration.
+	 * Returns the Neo4j driver configured via the OSGi service configuration.
 	 *
-	 * @return a Neo4j Driver class, null if the driver is not configured properly
+	 * @return a Neo4j driver class, null if the driver is not configured properly
 	 */
 	public Driver getDriver() {
 		if (_neo4jDriver == null) {
@@ -185,6 +185,8 @@ public class GraphDatabase {
 	}
 
 	/**
+	 * @deprecated As of 1.2.0
+	 *
 	 * Runs a Cypher statement against a Neo4j database. This method opens up a connection with the given connection
 	 * details, runs the statement and automatically closes the session after the default time defined in
 	 * {@link #SESSION_AUTOCLOSE_TIMEOUT}
@@ -197,6 +199,7 @@ public class GraphDatabase {
 	 * @param statement the Cypher statement which will be executed on the database
 	 * @return a result object wrapping the Neo4j {@link StatementResult}
 	 */
+	@Deprecated
 	public GraphDatabaseResult runStatement(
 		String url, String userName, String password, String statement) {
 
@@ -204,6 +207,8 @@ public class GraphDatabase {
 	}
 
 	/**
+	 * @deprecated As of 1.2.0
+	 *
 	 * Runs a Cypher statement against a Neo4j database. This method opens up a connection with the given connection
 	 * details, runs the statement and if the <code>autocloseSession</code> parameter is <code>true</code> automatically
 	 * closes the session after the default time defined in {@link #SESSION_AUTOCLOSE_TIMEOUT}
@@ -218,6 +223,7 @@ public class GraphDatabase {
  	 *                         default timeout
 	 * @return a result object wrapping the Neo4j {@link StatementResult}
 	 */
+	@Deprecated
 	public GraphDatabaseResult runStatement(
 		String url, String userName, String password, String statement, boolean autocloseSession) {
 
@@ -225,6 +231,8 @@ public class GraphDatabase {
 	}
 
 	/**
+	 * @deprecated As of 1.2.0
+	 *
 	 * Runs a Cypher statement against a Neo4j database. This method opens up a connection with the given connection
 	 * details, runs the statement and if the <code>autocloseSession</code> parameter is <code>true</code> automatically
 	 * closes the session after the default time defined in the <code>autocloseTimeout</code> parameter.
@@ -240,6 +248,7 @@ public class GraphDatabase {
 	 * @param autocloseTimeout a time value give in milliseconds to automatically close the opened session after
 	 * @return a result object wrapping the Neo4j {@link StatementResult}
 	 */
+	@Deprecated
 	public GraphDatabaseResult runStatement(
 		String url, String userName, String password, String statement, boolean autocloseSession,
 		int autocloseTimeout) {
@@ -248,6 +257,8 @@ public class GraphDatabase {
 	}
 
 	/**
+	 * @deprecated As of 1.2.0
+	 *
 	 * Runs a Cypher statement with the given parameters against a Neo4j database. This method opens up a connection
 	 * with the given connection details, This method opens up a connection with the given connection details, runs the
 	 * statement and automatically closes the session after the default time defined in
@@ -262,6 +273,7 @@ public class GraphDatabase {
 	 * @param parameters a parameter map being passed to the database to use with the statement
 	 * @return a result object wrapping the Neo4j {@link StatementResult}
 	 */
+	@Deprecated
 	public GraphDatabaseResult runStatement(
 		String url, String userName, String password, String statement, Map<String, Object> parameters) {
 
@@ -270,6 +282,8 @@ public class GraphDatabase {
 	}
 
 	/**
+	 * @deprecated As of 1.2.0
+	 *
 	 * Runs a Cypher statement with the given parameters against a Neo4j database. This method opens up a connection
 	 * with the given connection details, runs the statement and if the <code>autocloseSession</code> parameter is
 	 * <code>true</code> automatically closes the session after the default time defined in
@@ -286,6 +300,7 @@ public class GraphDatabase {
 	 *                         default timeout
 	 * @return a result object wrapping the Neo4j {@link StatementResult}
 	 */
+	@Deprecated
 	public GraphDatabaseResult runStatement(
 		String url, String userName, String password, String statement, Map<String, Object> parameters,
 		boolean autocloseSession) {
@@ -295,6 +310,8 @@ public class GraphDatabase {
 	}
 
 	/**
+	 * @deprecated As of 1.2.0
+	 *
 	 * Runs a Cypher statement with the given parameters against a Neo4j database. This method opens up a connection
 	 * with the given connection details, runs the statement and if the <code>autocloseSession</code> parameter is
 	 * <code>true</code> automatically closes the session after the default time defined in the
@@ -312,6 +329,7 @@ public class GraphDatabase {
 	 * @param autocloseTimeout a time value give in milliseconds to automatically close the opened session after
 	 * @return a result object wrapping the Neo4j {@link StatementResult}
 	 */
+	@Deprecated
 	public GraphDatabaseResult runStatement(
 		String url, String userName, String password, String statement, Map<String, Object> parameters,
 		boolean autocloseSession, int autocloseTimeout) {
@@ -320,11 +338,14 @@ public class GraphDatabase {
 	}
 
 	/**
+	 * @deprecated As of 1.2.0
+	 *
 	 * Closes a session previously opened by a <code>runStatement method</code>.
 	 *
 	 * @param resultUuid the UUID value of the result. This can be obtained from a {@link GraphDatabaseResult} object
 	 *                   which is a result of a <code>runStatement</code> method
 	 */
+	@Deprecated
 	public void endStatement(String resultUuid) {
 		Session session = _sessionMap.remove(resultUuid);
 
