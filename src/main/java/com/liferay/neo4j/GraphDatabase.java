@@ -28,7 +28,6 @@ import org.osgi.service.component.annotations.Modified;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.UUID;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -111,25 +110,6 @@ public class GraphDatabase {
 		graphDatabaseResult.onExhaustResult(session::close);
 
 		return graphDatabaseResult;
-	}
-
-	public GraphDatabaseSession getSession() {
-		String uuid = UUID.randomUUID().toString();
-		Session session = _neo4jDriver.session();
-
-		_sessionMap.put(uuid, session);
-
-		return new GraphDatabaseSession(uuid, session);
-	}
-
-	public GraphDatabaseSession getSession(String uuid) {
-		Session session = _sessionMap.get(uuid);
-
-		if ((session != null) && session.isOpen()) {
-			return new GraphDatabaseSession(uuid, _sessionMap.get(uuid));
-		}
-
-		return null;
 	}
 
 	/**
