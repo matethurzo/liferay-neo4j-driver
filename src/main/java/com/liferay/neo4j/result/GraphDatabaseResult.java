@@ -86,6 +86,8 @@ public class GraphDatabaseResult {
 						return false;
 					}
 
+					action.accept(record);
+
 					return true;
 				}
 			},
