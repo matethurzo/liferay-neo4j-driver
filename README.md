@@ -10,7 +10,7 @@ Currently we are wrapping the Neo4j Java driver 1.4.4 version. For more informat
 * The bundle exports the org.neo4j.driver.v1 package and all underlying packages. On the contrary the bundle does __not__ export the internal packages (org.neo4j.driver.internal).
 * A GraphDatabase declarative service is being registered to the OSGi service registry. GraphDatabase provides basic support to access your Neo4j instance and run simple queries against it.
 * OSGi configuration support
-* Minor utility feautres
+* Minor utility features
 
 # Planned features
 
@@ -27,11 +27,11 @@ Currently we are wrapping the Neo4j Java driver 1.4.4 version. For more informat
 ```
 <groupId>com.liferay.neo4j</groupId>
 <artifactId>neo4j-osgi-driver</artifactId>
-<version>1.1.1</version>
+<version>1.1.2</version>
 ```
 * In case you are using Liferay and developing a custom plugin, you can add this as a gradle dependency as well
 ```
-compile 'com.liferay.neo4j:neo4j-osgi-driver:1.1.1'
+compile 'com.liferay.neo4j:neo4j-osgi-driver:1.1.2'
 ```
 
 Once you have the JAR file you can reference it as a compile time dependency. You can drop it to the OSGi container and the driver will be available for other bundles to use.
@@ -74,6 +74,22 @@ public class NeoTest {
 		).forEach(
 			System.out::println
 		);
+
+		// Example 3
+		// Standard Neo4j driver methods
+
+		Session session = _graphDatabase.getSession();
+
+		session.run("CREATE (r:Rider {number: 46}) return r");
+
+		session.close();
+
+		// Example 4
+		// Autoclosing session
+
+		session = _graphDatabase.getAutoclosingSession(10000);
+
+		session.run("CREATE (r:Rider {number: 9}) return r");
 	}
 
 	@Reference
