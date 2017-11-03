@@ -25,6 +25,7 @@ import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.ConfigurationPolicy;
 import org.osgi.service.component.annotations.Modified;
+import org.osgi.service.metatype.annotations.Designate;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -43,6 +44,7 @@ import java.util.concurrent.TimeUnit;
 	configurationPid = "com.liferay.neo4j.configuration.GraphDatabaseConfiguration",
 	configurationPolicy = ConfigurationPolicy.REQUIRE,
 	immediate = true, service = GraphDatabase.class)
+@Designate(ocd = GraphDatabaseConfiguration.class)
 public class GraphDatabase {
 
 	/**
@@ -69,7 +71,10 @@ public class GraphDatabase {
 	 */
 	@Modified
 	public void modified(Map<String, Object> properties) {
-		_neo4jDriver.close();
+		if (_neo4jDriver != null) {
+			_neo4jDriver.close();
+		}
+
 		_sessionMap = new HashMap<>();
 
 		_graphDatabaseConfiguration = Configurable.createConfigurable(GraphDatabaseConfiguration.class, properties);

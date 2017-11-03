@@ -15,28 +15,29 @@
 package com.liferay.neo4j.configuration;
 
 import aQute.bnd.annotation.metatype.Meta;
+import org.osgi.service.metatype.annotations.ObjectClassDefinition;
 
 /**
  * @author Mate Thurzo
  */
-@Meta.OCD(
+@ObjectClassDefinition(
 	id = "com.liferay.neo4j.configuration.GraphDatabaseConfiguration", name = "Liferay Neo4j Service Configuration"
 )
-public interface GraphDatabaseConfiguration {
+public @interface GraphDatabaseConfiguration {
 
 	@Meta.AD(deflt = "neo4j", required = true)
-	public String userName();
+	public String userName() default "neo4j";
 
 	@Meta.AD(deflt = "neo4j", required = true)
-	public String password();
+	public String password() default "neo4j";
 
 	@Meta.AD(deflt = "localhost", required = true)
-	public String hostname();
+	public String hostname() default "localhost";
 
 	@Meta.AD(deflt = "7687", required = true)
-	public long port();
+	public long port() default 7687;
 
 	@Meta.AD(deflt = "50", required = false)
-	public int connectionPoolSize();
+	public int connectionPoolSize() default 50;
 
 }
