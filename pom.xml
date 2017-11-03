@@ -152,7 +152,7 @@
             <plugin>
                 <groupId>org.apache.felix</groupId>
                 <artifactId>maven-bundle-plugin</artifactId>
-                <version>3.0.1</version>
+                <version>3.3.0</version>
                 <executions>
                     <execution>
                         <id>bundle-manifest</id>
@@ -172,6 +172,8 @@
                         <Embed-Dependency>*;scope=compile;inline=true</Embed-Dependency>
                         <Embed-Directory>target/dependency</Embed-Directory>
                         <Embed-StripGroup>true</Embed-StripGroup>
+                        <_metatypeannotations>*</_metatypeannotations>
+                        <_dsannotations>*</_dsannotations>
                     </instructions>
                 </configuration>
             </plugin>
