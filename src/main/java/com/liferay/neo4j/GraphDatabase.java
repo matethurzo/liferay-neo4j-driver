@@ -145,6 +145,31 @@ public class GraphDatabase {
 	}
 
 	/**
+	 * Returns a <code>Session</code> from the Neo4j driver configured via OSGi. When using this method the developer
+	 * need to take care of closing the session when the work is done.
+	 *
+	 * @return a <code>Session</code> object from the Neo4j driver
+	 */
+	public Session getSession() {
+		return _neo4jDriver.session();
+	}
+
+	/**
+	 * Returns a <code>Session</code> from the Neo4j driver configured via OSGi. The session will be automatically
+	 * closed after the given timeout.
+	 *
+	 * @param autoCloseTimeout a timeout in milliseconds after the session will be automatically closed
+	 * @return a <code>Session</code> object from the Neo4j driver
+	 */
+	public Session getSession(long autoCloseTimeout) {
+		Session session = _neo4jDriver.session();
+
+		_autoCloseSessionTask(session, autoCloseTimeout);
+
+		return session;
+	}
+
+	/**
 	 * Acquires a new Neo4j Driver object.
 	 *
 	 * <i>This method does not respect the OSGi service configuration</i>
@@ -340,7 +365,7 @@ public class GraphDatabase {
 		return _neo4jDriver;
 	}
 
-	private Callable<Void> _autoCloseSessionTask(Session session, int autocloseTimeout) {
+	private Callable<Void> _autoCloseSessionTask(Session session, long autocloseTimeout) {
 		return () -> {
 			TimeUnit.MILLISECONDS.sleep(autocloseTimeout);
 
