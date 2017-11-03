@@ -50,8 +50,6 @@ import java.util.concurrent.TimeUnit;
 @Designate(ocd = GraphDatabaseConfiguration.class)
 public class GraphDatabase {
 
-	public static final String DEFAULT_EMBEDDED_DB_PATH = "data/neo4j/default";
-
 	/**
 	 * OSGi activate method
 	 *
@@ -104,7 +102,7 @@ public class GraphDatabase {
 				new GraphDatabaseFactory();
 
 			_embeddedDatabaseService = graphDatabaseFactory.newEmbeddedDatabase(
-				new File(DEFAULT_EMBEDDED_DB_PATH));
+				new File(_graphDatabaseConfiguration.embeddedDatabasePath()));
 		}
 
 		return _embeddedDatabaseService;
