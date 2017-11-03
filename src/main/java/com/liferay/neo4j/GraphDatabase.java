@@ -161,7 +161,7 @@ public class GraphDatabase {
 	 * @param autoCloseTimeout a timeout in milliseconds after the session will be automatically closed
 	 * @return a <code>Session</code> object from the Neo4j driver
 	 */
-	public Session getSession(long autoCloseTimeout) {
+	public Session getAutoclosingSession(long autoCloseTimeout) {
 		Session session = _neo4jDriver.session();
 
 		_autoCloseSessionTask(session, autoCloseTimeout);
