@@ -19,6 +19,7 @@ import com.liferay.neo4j.configuration.GraphDatabaseConfiguration;
 import com.liferay.neo4j.result.GraphDatabaseResult;
 import org.neo4j.driver.v1.AuthToken;
 import org.neo4j.driver.v1.AuthTokens;
+import org.neo4j.driver.v1.Driver;
 import org.neo4j.driver.v1.Session;
 import org.neo4j.driver.v1.StatementResult;
 import org.osgi.service.component.annotations.Activate;
@@ -125,6 +126,15 @@ public class GraphDatabase {
 		graphDatabaseResult.onExhaustResult(session::close);
 
 		return graphDatabaseResult;
+	}
+
+	/**
+	 * Returns the Neo4j Driver configured via the OSGi service configuration.
+	 *
+	 * @return a Neo4j Driver class, null if the driver is not configured properly
+	 */
+	public Driver getDriver() {
+		return _neo4jDriver;
 	}
 
 	/**
