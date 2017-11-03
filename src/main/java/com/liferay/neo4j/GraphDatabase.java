@@ -134,6 +134,13 @@ public class GraphDatabase {
 	 * @return a Neo4j Driver class, null if the driver is not configured properly
 	 */
 	public Driver getDriver() {
+		if (_neo4jDriver == null) {
+			String uri = "bolt://" + _graphDatabaseConfiguration.hostname() + ":" + _graphDatabaseConfiguration.port();
+
+			_neo4jDriver = org.neo4j.driver.v1.GraphDatabase.driver(
+				uri, AuthTokens.basic(_graphDatabaseConfiguration.userName(), _graphDatabaseConfiguration.password()));
+		}
+
 		return _neo4jDriver;
 	}
 
