@@ -53,10 +53,27 @@ public class NeoTest {
 	@Modified
 	@Activate
 	public void activate() {
+
+		// Example 1
+
 		GraphDatabaseResult result = _graphDatabase.runStatement(
 			"MATCH (n:TestNode) return n");
 
 		result.recordStream().forEach((record) -> _log.info(record.fields()));
+
+
+		// Example 2
+		// Rider nodes have an attribute called name
+
+		result = _graphDatabase.runStatement("MATCH (r:Rider) return r");
+
+		// Prints each rider's name to the console
+
+		result.recordStream().map(
+			(record) -> record.get("r").asNode().get("name")
+		).forEach(
+			System.out::println
+		);
 	}
 
 	@Reference
