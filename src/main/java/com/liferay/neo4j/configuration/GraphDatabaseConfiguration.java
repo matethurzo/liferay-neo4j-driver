@@ -40,4 +40,7 @@ public @interface GraphDatabaseConfiguration {
 	@Meta.AD(deflt = "50", required = false)
 	public int connectionPoolSize() default 50;
 
+	@Meta.AD(deflt = "data/neo4j/default")
+	public String embeddedDatabasePath() default "data/neo4j/default";
+
 }
